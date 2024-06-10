@@ -1,7 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  // states for name, attack, defense, hp, speed and image
+
+  // useEffect to fetch data from the API
+
+  // onClick function to compare the stats of the two cards
+
+  // store outcome details in database for past battles page
+
   return (
     <div className="App">
       <header className="App-header">
