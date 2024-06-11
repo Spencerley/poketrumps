@@ -1,8 +1,7 @@
 import React from "react";
-import userPokemon from "../App";
-import computerPokemon from "../App";
 
-export default function Battle() {
+
+export default function Battle({userPokemon, computerPokemon}) {
   return (
     <>
       <div className="battle">

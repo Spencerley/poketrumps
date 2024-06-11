@@ -19,6 +19,33 @@ function App() {
   // button to fetch pokemon based on name input
 
   // GET api call to fetch pokemon - https://pokeapi.co/api/v2/pokemon/{pokemonname}
+
+  // set api details
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      if (inputValue) {
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`);
+          const data = await response.json();
+          const name = data.name;
+          const attack = data.stats[1].base_stat;
+          const defense = data.stats[2].base_stat;
+          const hp = data.stats[0].base_stat;
+          const speed = data.stats[5].base_stat;
+          // defense, hp, speed } = stats.find(stat => stat.stat.name === 'attack' || stat.stat.name === 'defense' || stat.stat.name === 'hp' || stat.stat.name === 'speed');
+          const image = data.sprites.front_default;
+          setUserPokemon({ PokemonName: name, attack: attack, defense: defense, hp: hp, speed: speed, image: image });
+          console.log(userPokemon);
+        } catch (error) {
+          console.error('Error fetching pokemon:', error);
+        }
+      }
+    };
+
+    fetchPokemon();
+  }, [inputValue]);
+
   
   // api call to fetch random pokemon - https://pokeapi.co/api/v2/pokemon/{randomnumber}
 
@@ -48,7 +75,7 @@ function App() {
         <button>Fetch Pokemon</button>
         <button>Random Pokemon</button>
       </div>
-    </div><Battle {...{computerPokemon, userPokemon}}/>
+    </div><Battle computerPokemon={computerPokemon} userPokemon={userPokemon}/>
     </>
   );
 }
