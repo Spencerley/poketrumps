@@ -1,10 +1,10 @@
-import logo from '../logo.svg';
 import '../App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
 
   // states for name, attack, defense, hp, speed and image - how will image be stored? image is "sprites" {"front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"}
+  // could set the state as {pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''}?
   const [pokemonName, setPokemonName] = useState('');
   const [attack, setAttack] = useState('');
   const [defense, setDefense] = useState('');
