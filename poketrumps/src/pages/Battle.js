@@ -1,16 +1,7 @@
 import React from 'react';
-import pokemonName from './App';
-import image from './App'; 
-import attack from './App';
-import defense from './App';
-import hp from './App';
-import speed from './App';
-import computerAttack from './App';
-import computerDefense from './App';
-import computerHp from './App';
-import computerImage from './App';
-import computerPokemonName from './App';
-import computerSpeed from './App';
+import userPokemon from './App';
+import computerPokemon from './App';
+
 
 
 export default function Battle() {
@@ -18,20 +9,20 @@ export default function Battle() {
         <>
         <div className='battle'>
         <div className='userCard'>
-          <h2>{pokemonName}</h2>
-          <img src={image} alt='pokemon'/>
-          <p>Attack: {attack}</p>
-          <p>Defense: {defense}</p>
-          <p>HP: {hp}</p>
-          <p>Speed: {speed}</p>
+          <h2>{userPokemon.pokemonName}</h2>
+          <img src={userPokemon.image} alt='pokemon'/>
+          <p>Attack: {userPokemon.attack}</p>
+          <p>Defense: {userPokemon.defense}</p>
+          <p>HP: {userPokemon.hp}</p>
+          <p>Speed: {userPokemon.speed}</p>
           </div>
         <div className='computerCard'>
-          <h2>{computerPokemonName}</h2>
-          <img src={computerImage} alt='pokemon'/>
-          <p>Attack: {computerAttack}</p>
-          <p>Defense: {computerDefense}</p>
-          <p>HP: {computerHp}</p>
-          <p>Speed: {computerSpeed}</p>
+          <h2>{computerPokemon.name}</h2>
+          <img src={computerPokemon.image} alt='pokemon'/>
+          <p>Attack: {computerPokemon.attack}</p>
+          <p>Defense: {computerPokemon.defense}</p>
+          <p>HP: {computerPokemon.hp}</p>
+          <p>Speed: {computerPokemon.speed}</p>
           </div>
           </div>
         </>

@@ -5,18 +5,8 @@ function App() {
 
   // states for name, attack, defense, hp, speed and image - how will image be stored? image is "sprites" {"front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"}
   // could set the state as {pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''}?
-  const [pokemonName, setPokemonName] = useState('');
-  const [attack, setAttack] = useState('');
-  const [defense, setDefense] = useState('');
-  const [hp, setHp] = useState('');
-  const [speed, setSpeed] = useState('');
-  const [image, setImage] = useState('');
-  const [computerPokemonName, setComputerPokemonName] = useState('');
-  const [computerAttack, setComputerAttack] = useState('');
-  const [computerDefense, setComputerDefense] = useState('');
-  const [computerHp, setComputerHp] = useState('');
-  const [computerSpeed, setComputerSpeed] = useState('');
-  const [computerImage, setComputerImage] = useState('');
+  const [userPokemon, setUserPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
+  const [computerPokemon, setComputerPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
   const [inputValue, setInputValue] = useState('');
 
   // input field for name of pokemon
