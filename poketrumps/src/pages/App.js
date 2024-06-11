@@ -5,8 +5,17 @@ import { useEffect, useState } from 'react';
 function App() {
 
   // states for name, attack, defense, hp, speed and image - how will image be stored?
+  let [pokemonName, setPokemonName] = useState('');
+  let [attack, setAttack] = useState('');
+  let [defense, setDefense] = useState('');
+  let [hp, setHp] = useState('');
+  let [speed, setSpeed] = useState('');
+  let [image, setImage] = useState(''); 
 
-  // useEffect to fetch data from the API - based on a name input or a random button(id of pokemon)
+  // api call to fetch pokemon - https://pokeapi.co/api/v2/pokemon/{pokemonname}
+  // api call to fetch random pokemon - https://pokeapi.co/api/v2/pokemon/{randomnumber}
+
+  // useEffect to fetch and set data from the API - based on a name input or a random button(id of pokemon)
 
   // onClick function to compare the stats of the two cards based on the selected stat
 
