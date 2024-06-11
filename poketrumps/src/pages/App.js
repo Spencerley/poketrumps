@@ -6,9 +6,9 @@ function App() {
 
   // states for name, attack, defense, hp, speed and image
 
-  // useEffect to fetch data from the API
+  // useEffect to fetch data from the API - based on a name input or a random button(id of pokemon)
 
-  // onClick function to compare the stats of the two cards
+  // onClick function to compare the stats of the two cards based on the selected stat
 
   // store outcome details in database for past battles page
 
