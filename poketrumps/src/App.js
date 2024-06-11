@@ -1,5 +1,6 @@
-import '../App.css';
+import './App.css';
 import { useEffect, useState } from 'react';
+import Battle from './pages/Battle';
 
 function App() {
 
@@ -31,23 +32,24 @@ function App() {
     // could this be one database with a column for user and computer?
 
   return (
-    <div className="App">
+    <><div className="App">
       <header className="App-header">
         <h1>
           PokeTrumps
         </h1>
       </header>
       <div>
-      <input type="text" 
-        className="emptyListInput"
-        value={inputValue}
-        onChange={handleInputValue}
-        placeholder="Enter Pokemon Name">
+        <input type="text"
+          className="emptyListInput"
+          value={inputValue}
+          onChange={handleInputValue}
+          placeholder="Enter Pokemon Name">
         </input>
-      <button>Fetch Pokemon</button>
-      <button>Random Pokemon</button>
+        <button>Fetch Pokemon</button>
+        <button>Random Pokemon</button>
       </div>
-    </div>
+    </div><Battle {...{computerPokemon, userPokemon}}/>
+    </>
   );
 }
 
