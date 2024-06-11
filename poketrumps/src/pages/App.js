@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  // states for name, attack, defense, hp, speed and image
+  // states for name, attack, defense, hp, speed and image - how will image be stored?
 
   // useEffect to fetch data from the API - based on a name input or a random button(id of pokemon)
 
