@@ -11,6 +11,9 @@ function App() {
   // onClick function to compare the stats of the two cards based on the selected stat
 
   // store outcome details in database for past battles page
+    // write to user past battles database
+    // write to computer past battles database
+    // could this be one database with a column for user and computer?
 
   return (
     <div className="App">
