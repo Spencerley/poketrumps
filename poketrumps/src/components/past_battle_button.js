@@ -1,1 +1,0 @@
-// button to take you to past battles page
