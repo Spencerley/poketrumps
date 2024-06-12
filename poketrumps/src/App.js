@@ -114,7 +114,7 @@ function App() {
           PokeTrumps
         </h1>
       </header>
-      <div>
+      <div className='input'>
         <input type="text"
           className="emptyListInput"
           value={inputValue}

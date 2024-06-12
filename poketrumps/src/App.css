@@ -13,6 +13,11 @@
   }
 }
 
+@font-face {
+  font-family: "Pokemon";
+  src: url('https://www.fontsaddict.com/fontface/pokemon-pixel-font-regular.ttf');
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 15vh;
@@ -21,7 +26,17 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffcb05;
+  font-family:"pixelFont";
+}
+
+.input {
+  display: flex;
+  background-color: #282c34;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  font-family: 'pixelFont';
 }
 
 .App-link {
@@ -39,7 +54,7 @@
 
 .battle {
   display: flex;
-  border: 1px solid black;
+  background-color: #282c34;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -50,11 +65,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 10px solid #ffcb05;
+  border-radius: 25px;
+  background-color: #2a75bb;
   margin: 10px;
   padding: 10px;
   min-width: 40vh;
   min-height: 70vh;
+  font-family: 'pixelFont';
+}
+
+img{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.Stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'pixelFont';
+}
+
+.onClick {
+  cursor: hand;
 }
 
 .computerCard {
@@ -62,9 +98,66 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 10px solid #ffcb05;
+  border-radius: 25px;
+  background-color: #2a75bb;
   margin: 10px;
   padding: 10px;
   min-width: 40vh;
   min-height: 70vh;
+}
+.computerCardBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #3c5aa6;
+  border-radius: 25px;
+  background-color: #2a75bb;
+  margin: 10px;
+  padding: 10px;
+  min-width: 40vh;
+  min-height: 70vh;
+}
+
+.playAgain {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  width: 20vh;
+  position: fixed;
+  align-items: center;
+  border: 5px solid #ffcb05;
+  background-color: #282c34;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  );
+}
+
+h2 {
+  font-size: 2em;
+  color: #ffcb05;
+  text-align: start;
+}
+
+p {
+  font-size: 1em;
+  color: #ffcb05;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'pixelFont';
+  background-color: #3c5aa6;
+  border-radius: 5px;
 }
