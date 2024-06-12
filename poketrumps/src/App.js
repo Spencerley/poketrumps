@@ -1,6 +1,8 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Battle from './pages/Battle';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
 
@@ -9,6 +11,9 @@ function App() {
   const [userPokemon, setUserPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
   const [computerPokemon, setComputerPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
   const [inputValue, setInputValue] = useState('');
+  const compRandom = Math.floor(Math.random() * 1025) + 1;
+  const userRandom = Math.floor(Math.random() * 1025) + 1;
+  const navigate = useNavigate();
 
   // input field for name of pokemon
   function handleInputValue(e) {
@@ -22,9 +27,11 @@ function App() {
 
   // set api details
 
-  useEffect(() => {
+  function handleFetchPokemon(){
+    console.log(inputValue, compRandom);
+    setInputValue(inputValue.toLowerCase().trim());
     const fetchPokemon = async () => {
-      if (inputValue) {
+      if (inputValue && compRandom) {
         try {
           const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`);
           const data = await response.json();
@@ -33,21 +40,63 @@ function App() {
           const defense = data.stats[2].base_stat;
           const hp = data.stats[0].base_stat;
           const speed = data.stats[5].base_stat;
-          // defense, hp, speed } = stats.find(stat => stat.stat.name === 'attack' || stat.stat.name === 'defense' || stat.stat.name === 'hp' || stat.stat.name === 'speed');
           const image = data.sprites.front_default;
-          setUserPokemon({ PokemonName: name, attack: attack, defense: defense, hp: hp, speed: speed, image: image });
+          setUserPokemon({ pokemonName: name, attack: attack, defense: defense, hp: hp, speed: speed, image: image });
           console.log(userPokemon);
+          const compResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${compRandom}`);
+          const compData = await compResponse.json();
+          const compName = compData.name;
+          const compAttack = compData.stats[1].base_stat;
+          const compdefense = compData.stats[2].base_stat;
+          const compHp = compData.stats[0].base_stat;
+          const compSpeed = compData.stats[5].base_stat;
+          const compimage = compData.sprites.front_default;
+          setComputerPokemon({ pokemonName: compName, attack: compAttack, defense: compdefense, hp: compHp, speed: compSpeed, image: compimage });
+          console.log(userPokemon);
+          navigate('/battle');
         } catch (error) {
           console.error('Error fetching pokemon:', error);
         }
       }
     };
-
     fetchPokemon();
-  }, [inputValue]);
-
+  }
   
   // api call to fetch random pokemon - https://pokeapi.co/api/v2/pokemon/{randomnumber}
+
+  function handleFetchRandomPokemon(){
+    const fetchPokemon = async () => {
+      if (userRandom && compRandom) {
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${userRandom}`);
+          const data = await response.json();
+          const name = data.name;
+          const attack = data.stats[1].base_stat;
+          const defense = data.stats[2].base_stat;
+          const hp = data.stats[0].base_stat;
+          const speed = data.stats[5].base_stat;
+          const image = data.sprites.front_default;
+          setUserPokemon({ pokemonName: name, attack: attack, defense: defense, hp: hp, speed: speed, image: image });
+          console.log(userPokemon);
+          const compResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${compRandom}`);
+          const compData = await compResponse.json();
+          const compName = compData.name;
+          const compAttack = compData.stats[1].base_stat;
+          const compdefense = compData.stats[2].base_stat;
+          const compHp = compData.stats[0].base_stat;
+          const compSpeed = compData.stats[5].base_stat;
+          const compimage = compData.sprites.front_default;
+          setComputerPokemon({ pokemonName: compName, attack: compAttack, defense: compdefense, hp: compHp, speed: compSpeed, image: compimage });
+          console.log(userPokemon);
+          navigate('/battle');
+        } catch (error) {
+          console.error('Error fetching pokemon:', error);
+        }
+      }
+    };
+    fetchPokemon();
+  }
+
 
   // useEffect to fetch and set data from the API - based on a name input or a random button(id of pokemon)
 
@@ -72,10 +121,14 @@ function App() {
           onChange={handleInputValue}
           placeholder="Enter Pokemon Name">
         </input>
-        <button>Fetch Pokemon</button>
-        <button>Random Pokemon</button>
+        <button onClick={handleFetchPokemon}>Fetch Pokemon</button>
+        <button onClick={handleFetchRandomPokemon}>Random Pokemon</button>
       </div>
-    </div><Battle computerPokemon={computerPokemon} userPokemon={userPokemon}/>
+    </div>
+    <Routes>
+    <Route path="/battle" element={<Battle userPokemon={userPokemon} computerPokemon={computerPokemon}/>}>
+      </Route>
+    </Routes>
     </>
   );
 }
