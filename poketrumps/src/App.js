@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { useState } from 'react';
 import Battle from './pages/Battle';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 
 function App() {
 
@@ -13,7 +13,6 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const compRandom = Math.floor(Math.random() * 1025) + 1;
   const userRandom = Math.floor(Math.random() * 1025) + 1;
-  const navigate = useNavigate();
 
   // input field for name of pokemon
   function handleInputValue(e) {
@@ -21,12 +20,7 @@ function App() {
     setInputValue(value);
   }
 
-  // button to fetch pokemon based on name input
-
-  // GET api call to fetch pokemon - https://pokeapi.co/api/v2/pokemon/{pokemonname}
-
-  // set api details
-
+  // GET api call to fetch pokemon - based on input value
   function handleFetchPokemon(){
     console.log(inputValue, compRandom);
     setInputValue(inputValue.toLowerCase().trim());
@@ -53,7 +47,6 @@ function App() {
           const compimage = compData.sprites.front_default;
           setComputerPokemon({ pokemonName: compName, attack: compAttack, defense: compdefense, hp: compHp, speed: compSpeed, image: compimage });
           console.log(userPokemon);
-          navigate('/battle');
         } catch (error) {
           console.error('Error fetching pokemon:', error);
         }
@@ -62,8 +55,7 @@ function App() {
     fetchPokemon();
   }
   
-  // api call to fetch random pokemon - https://pokeapi.co/api/v2/pokemon/{randomnumber}
-
+  // api call to fetch random pokemon
   function handleFetchRandomPokemon(){
     const fetchPokemon = async () => {
       if (userRandom && compRandom) {
@@ -88,7 +80,6 @@ function App() {
           const compimage = compData.sprites.front_default;
           setComputerPokemon({ pokemonName: compName, attack: compAttack, defense: compdefense, hp: compHp, speed: compSpeed, image: compimage });
           console.log(userPokemon);
-          navigate('/battle');
         } catch (error) {
           console.error('Error fetching pokemon:', error);
         }
@@ -96,16 +87,6 @@ function App() {
     };
     fetchPokemon();
   }
-
-
-  // useEffect to fetch and set data from the API - based on a name input or a random button(id of pokemon)
-
-  // onClick function to compare the stats of the two cards based on the selected stat
-
-  // store outcome details in database for past battles page
-    // write to user past battles database
-    // write to computer past battles database
-    // could this be one database with a column for user and computer?
 
   return (
     <><div className="App">
@@ -121,8 +102,8 @@ function App() {
           onChange={handleInputValue}
           placeholder="Enter Pokemon Name">
         </input>
-        <button onClick={handleFetchPokemon}>Fetch Pokemon</button>
-        <button onClick={handleFetchRandomPokemon}>Random Pokemon</button>
+        <Link to={inputValue && '/battle'} ><button onClick={handleFetchPokemon}>Fetch Pokemon</button></Link>
+        <Link to='/battle' ><button onClick={handleFetchRandomPokemon}>Random Pokemon</button></Link>
       </div>
     </div>
     <Routes>

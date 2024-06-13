@@ -1,6 +1,6 @@
 import React from "react";
 import "../battle.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -8,7 +8,6 @@ export default function Battle({ userPokemon, computerPokemon}) {
   let userStat = [userPokemon.attack, userPokemon.defense, userPokemon.hp, userPokemon.speed];
   let computerStat = [computerPokemon.attack, computerPokemon.defense, computerPokemon.hp, computerPokemon.speed];
   const [showComputerCard, setShowComputerCard] = useState(false);
-  const navigate = useNavigate();
   const [winner, setWinner] = useState('');
   const [showPlayAgain, setShowPlayAgain] = useState(false);
   const [attack, setAttack] = useState(false);
@@ -69,13 +68,9 @@ export default function Battle({ userPokemon, computerPokemon}) {
     // wait 5 seconds then setshowPlayagain
     setTimeout(() => {
       setShowPlayAgain(true);
-    }, 5000);
+    }, 3000);
     }
 
-    function handlePlayAgain() {
-      setShowComputerCard(false);
-      navigate('/');
-    }
 
   return (
     <>
@@ -108,7 +103,7 @@ export default function Battle({ userPokemon, computerPokemon}) {
       {showPlayAgain && (
         <div className="playAgain"> 
         <p>{winner}</p>
-      <button className="playButton" onClick={handlePlayAgain}>Play Again</button>
+      <Link to='/'><button className="playButton" >Play Again</button></Link>
       </div>
       )}
     </>
