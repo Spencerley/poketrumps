@@ -106,7 +106,7 @@ function App() {
       </div>
     </div>
     <Routes>
-    <Route path="/battle" element={<Battle userPokemon={userPokemon} computerPokemon={computerPokemon}/>}>
+    <Route path="/battle" element={<Battle userPokemon={userPokemon} computerPokemon={computerPokemon} inputValue={inputValue} setInputValue={setInputValue}/>}>
       </Route>
     </Routes>
     </>
