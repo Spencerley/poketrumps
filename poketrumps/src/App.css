@@ -163,3 +163,9 @@ button {
   color: #ffcb05;
   border-radius: 5px;
 }
+
+/* conditional highlighter styling */
+.highlight {
+  background-color: #ffcb05;
+  color: #282c34;
+}

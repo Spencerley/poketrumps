@@ -11,6 +11,11 @@ export default function Battle({ userPokemon, computerPokemon}) {
   const navigate = useNavigate();
   const [winner, setWinner] = useState('');
   const [showPlayAgain, setShowPlayAgain] = useState(false);
+  const [attack, setAttack] = useState(false);
+  const [defense, setDefense] = useState(false);
+  const [hp, setHp] = useState(false);
+  const [speed, setSpeed] = useState(false);
+
 
   // onClick function to compare the selected stats of the two cards based on the stat in the <p> tag
   // store the result of the comparison
@@ -26,6 +31,7 @@ export default function Battle({ userPokemon, computerPokemon}) {
       } else {
         setWinner("Computer wins");
       }
+      setAttack(true);
     }
     else if (statIndex === 1) {
       if (userStat[1] > computerStat[1]) {
@@ -36,6 +42,7 @@ export default function Battle({ userPokemon, computerPokemon}) {
       else {
         setWinner("Computer wins");
       }
+      setDefense(true);
     }
     else if (statIndex === 2) {
       if (userStat[2] > computerStat[2]) {
@@ -46,6 +53,7 @@ export default function Battle({ userPokemon, computerPokemon}) {
       else {
         setWinner("Computer wins");
       }
+      setHp(true);
     }
     else if (statIndex === 3) {
       if (userStat[3] > computerStat[3]) {
@@ -56,6 +64,7 @@ export default function Battle({ userPokemon, computerPokemon}) {
       else {
         setWinner("Computer wins");
       }
+      setSpeed(true);
     }
     // wait 5 seconds then setshowPlayagain
     setTimeout(() => {
@@ -75,10 +84,10 @@ export default function Battle({ userPokemon, computerPokemon}) {
           <h2>{userPokemon.pokemonName}</h2>
           <img src={userPokemon.image} alt="pokemon" />
           <div className="Stats">
-          <p className="attack" onClick={() => handleCompareStats(0)}> Attack: {userStat[0]}</p>
-          <p onClick={() => handleCompareStats(1)}>Defense: {userStat[1]}</p>
-          <p onClick={() => handleCompareStats(2)}>HP: {userStat[2]}</p>
-          <p onClick={() => handleCompareStats(3)}>Speed: {userStat[3]}</p>
+          <p className={ attack ? "highlight" : ""} onClick={() => handleCompareStats(0)}> Attack: {userStat[0]}</p>
+          <p className={ defense ? "highlight" : ""} onClick={() => handleCompareStats(1)}>Defense: {userStat[1]}</p>
+          <p className={ hp ? "highlight" : ""} onClick={() => handleCompareStats(2)}>HP: {userStat[2]}</p>
+          <p className={ speed ? "highlight" : ""} onClick={() => handleCompareStats(3)}>Speed: {userStat[3]}</p>
           </div>
         </div>
         {showComputerCard ? (
@@ -86,10 +95,10 @@ export default function Battle({ userPokemon, computerPokemon}) {
           <h2>{computerPokemon.pokemonName}</h2>
           <img src={computerPokemon.image} alt="pokemon" />
           <div className="Stats">
-          <p>Attack: {computerPokemon.attack}</p>
-          <p>Defense: {computerPokemon.defense}</p>
-          <p>HP: {computerPokemon.hp}</p>
-          <p>Speed: {computerPokemon.speed}</p>
+          <p className={ attack ? "highlight" : ""}>Attack: {computerPokemon.attack}</p>
+          <p className={ defense ? "highlight" : ""}>Defense: {computerPokemon.defense}</p>
+          <p className={ hp ? "highlight" : ""}>HP: {computerPokemon.hp}</p>
+          <p className={ speed ? "highlight" : ""}>Speed: {computerPokemon.speed}</p>
           </div>
         </div>) : (
           <div className="computerCardBack">Pick your Stat!</div>
