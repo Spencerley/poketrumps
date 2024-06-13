@@ -17,13 +17,12 @@ function App() {
   // input field for name of pokemon
   function handleInputValue(e) {
     const { value } = e.target;
-    setInputValue(value);
+    setInputValue(value.toLowerCase().trim());
   }
 
   // GET api call to fetch pokemon - based on input value
   function handleFetchPokemon(){
     console.log(inputValue, compRandom);
-    setInputValue(inputValue.toLowerCase().trim());
     const fetchPokemon = async () => {
       if (inputValue && compRandom) {
         try {
