@@ -53,6 +53,10 @@ function App() {
     };
     fetchPokemon();
   }
+
+  function inputEmpty() {
+    setInputValue('');
+  }
   
   // api call to fetch random pokemon
   function handleFetchRandomPokemon(){
@@ -106,7 +110,7 @@ function App() {
       </div>
     </div>
     <Routes>
-    <Route path="/battle" element={<Battle userPokemon={userPokemon} computerPokemon={computerPokemon} inputValue={inputValue} setInputValue={setInputValue}/>}>
+    <Route path="/battle" element={<Battle userPokemon={userPokemon} computerPokemon={computerPokemon} inputValue={inputValue} setInputValue={setInputValue} inputEmpty={inputEmpty}/>}>
       </Route>
     </Routes>
     </>

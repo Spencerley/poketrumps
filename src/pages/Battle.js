@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-export default function Battle({ userPokemon, computerPokemon, setInputValue, InputValue}) {
+export default function Battle({ userPokemon, computerPokemon, setInputValue, InputValue, inputEmpty}) {
   let userStat = [userPokemon.attack, userPokemon.defense, userPokemon.hp, userPokemon.speed];
   let computerStat = [computerPokemon.attack, computerPokemon.defense, computerPokemon.hp, computerPokemon.speed];
   const [showComputerCard, setShowComputerCard] = useState(false);
@@ -103,7 +103,7 @@ export default function Battle({ userPokemon, computerPokemon, setInputValue, In
       {showPlayAgain && (
         <div className="playAgain"> 
         <p>{winner}</p>
-      <Link to='/'><button className="playButton" onClick={setInputValue('')}>Play Again</button></Link>
+      <Link to='/'><button className="playButton" onClick={inputEmpty}>Play Again</button></Link>
       </div>
       )}
     </>
