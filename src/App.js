@@ -108,7 +108,7 @@ function App() {
           placeholder="Enter Pokemon Name">
         </input>
         <Link to={inputValue && '/battle'} ><button onClick={handleFetchPokemon}>Fetch Pokemon</button></Link>
-        <Link to='/battle' ><button onClick={handleFetchRandomPokemon}>Random Pokemon</button></Link>
+        <Link to='/battle'><button onClick={handleFetchRandomPokemon}>Random Pokemon</button></Link>
       </div>
     </div>
     <Routes>
