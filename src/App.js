@@ -56,6 +56,8 @@ function App() {
 
   function inputEmpty() {
     setInputValue('');
+    setComputerPokemon({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''})
+    setUserPokemon({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''})
   }
   
   // api call to fetch random pokemon
