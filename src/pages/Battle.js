@@ -65,7 +65,7 @@ export default function Battle({ userPokemon, computerPokemon, setInputValue, In
       }
       setSpeed(true);
     }
-    // wait 5 seconds then setshowPlayagain
+    // wait 3 seconds then setshowPlayagain
     setTimeout(() => {
       setShowPlayAgain(true);
     }, 3000);
