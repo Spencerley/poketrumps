@@ -6,21 +6,17 @@ import { Route, Routes, Link } from 'react-router-dom';
 
 function App() {
 
-  // states for name, attack, defense, hp, speed and image - how will image be stored? image is "sprites" {"front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"}
-  // could set the state as {pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''}?
   const [userPokemon, setUserPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
   const [computerPokemon, setComputerPokemon] = useState({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''});
   const [inputValue, setInputValue] = useState('');
   const compRandom = Math.floor(Math.random() * 1025) + 1;
   const userRandom = Math.floor(Math.random() * 1025) + 1;
 
-  // input field for name of pokemon
   function handleInputValue(e) {
     const { value } = e.target;
     setInputValue(value.toLowerCase().trim());
   }
 
-  // GET api call to fetch pokemon - based on input value
   function handleFetchPokemon(){
     console.log(inputValue, compRandom);
     const fetchPokemon = async () => {
@@ -60,7 +56,6 @@ function App() {
     setUserPokemon({pokemonName: '', attack: '', defense: '', hp: '', speed: '', image: ''})
   }
   
-  // api call to fetch random pokemon
   function handleFetchRandomPokemon(){
     const fetchPokemon = async () => {
       if (userRandom && compRandom) {

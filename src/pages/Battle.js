@@ -15,61 +15,34 @@ export default function Battle({ userPokemon, computerPokemon, setInputValue, In
   const [hp, setHp] = useState(false);
   const [speed, setSpeed] = useState(false);
 
+  const compareStat = (userStatIndex, computerStatIndex, setter) => {
+    if (userStat[userStatIndex] > computerStat[computerStatIndex]) {
+      setWinner("User wins");
+    } else if (userStat[userStatIndex] === computerStat[computerStatIndex]) {
+      setWinner("It's a draw");
+    } else {
+      setWinner("Computer wins");
+    }
+    setter(true);
+    console.log("User stat:", userStat[userStatIndex], "Computer stat:", computerStat[computerStatIndex])
+  };
 
-  // onClick function to compare the selected stats of the two cards based on the stat in the <p> tag
-  // store the result of the comparison
-  // display the result of the comparison
   const handleCompareStats = (statIndex) => {
     setShowComputerCard(true);
-    // Implement logic to compare userStats[statIndex] with computerStats[statIndex]
-    if (statIndex === 0) {
-      if (userStat[0] > computerStat[0]) {
-        setWinner("User wins");
-      } else if (userStat[0] === computerStat[0]) {
-        setWinner("It's a draw");
-      } else {
-        setWinner("Computer wins");
-      }
-      setAttack(true);
+    const statMap = {
+      0: { userStatIndex: 0, setter: setAttack },
+      1: { userStatIndex: 1, setter: setDefense },
+      2: { userStatIndex: 2, setter: setHp },
+      3: { userStatIndex: 3, setter: setSpeed },
+    };
+    if (statIndex in statMap) {
+      const { userStatIndex, setter } = statMap[statIndex];
+      compareStat(userStatIndex, statIndex, setter);
     }
-    else if (statIndex === 1) {
-      if (userStat[1] > computerStat[1]) {
-        setWinner("User wins");
-      } else if (userStat[1] === computerStat[1]) {
-        setWinner("It's a draw");
-      }
-      else {
-        setWinner("Computer wins");
-      }
-      setDefense(true);
-    }
-    else if (statIndex === 2) {
-      if (userStat[2] > computerStat[2]) {
-        setWinner("User wins");
-      } else if (userStat[2] === computerStat[2]) {
-        setWinner("It's a draw");
-      } 
-      else {
-        setWinner("Computer wins");
-      }
-      setHp(true);
-    }
-    else if (statIndex === 3) {
-      if (userStat[3] > computerStat[3]) {
-        setWinner("User wins");
-      } else if (userStat[3] === computerStat[3]) {
-        setWinner("It's a draw");
-      } 
-      else {
-        setWinner("Computer wins");
-      }
-      setSpeed(true);
-    }
-    // wait 3 seconds then setshowPlayagain
     setTimeout(() => {
       setShowPlayAgain(true);
     }, 3000);
-    }
+  };
 
 
   return (
@@ -99,7 +72,6 @@ export default function Battle({ userPokemon, computerPokemon, setInputValue, In
           <div className="computerCardBack">Pick your Stat!</div>
         )}
       </div>
-      {/* conditionally render "Play Again" button only if user has selected a stat and 10 seconds have passed */}
       {showPlayAgain && (
         <div className="playAgain"> 
         <p>{winner}</p>
