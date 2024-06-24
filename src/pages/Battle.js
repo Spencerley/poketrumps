@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-export default function Battle({ userPokemon, computerPokemon, setInputValue, InputValue, inputEmpty}) {
+export default function Battle({ userPokemon, computerPokemon, inputEmpty}) {
   let userStat = [userPokemon.attack, userPokemon.defense, userPokemon.hp, userPokemon.speed];
   let computerStat = [computerPokemon.attack, computerPokemon.defense, computerPokemon.hp, computerPokemon.speed];
   const [showComputerCard, setShowComputerCard] = useState(false);
